@@ -1,0 +1,79 @@
+version: "3.9"
+
+services:
+
+  # ── Masar AI Microservice ────────────────────────────────────────────────────
+  masar-ai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: masar-ai-service
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017
+      - MONGODB_DB_NAME=masar_ai
+      - DEBUG=false
+      - LOG_LEVEL=INFO
+      - EMBEDDING_MODEL=all-MiniLM-L6-v2
+      - EMBEDDING_DIMENSION=384
+      - FAISS_INDEX_PATH=/app/data/faiss_index
+      - USE_OPENAI=${USE_OPENAI:-false}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - GITHUB_TOKEN=${GITHUB_TOKEN:-}
+    volumes:
+      - faiss_data:/app/data/faiss_index
+      - ai_logs:/app/logs
+    depends_on:
+      mongo:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - masar-network
+
+  # ── MongoDB ───────────────────────────────────────────────────────────────────
+  mongo:
+    image: mongo:7.0
+    container_name: masar-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+      - ./scripts/mongo-init.js:/docker-entrypoint-initdb.d/init.js:ro
+    environment:
+      - MONGO_INITDB_DATABASE=masar_ai
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - masar-network
+    restart: unless-stopped
+
+  # ── Mongo Express (DB UI, dev only) ───────────────────────────────────────────
+  mongo-express:
+    image: mongo-express:1.0.2
+    container_name: masar-mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=admin123
+    depends_on:
+      - mongo
+    networks:
+      - masar-network
+    profiles:
+      - dev        # Only starts with: docker compose --profile dev up
+
+volumes:
+  mongo_data:
+  faiss_data:
+  ai_logs:
+
+networks:
+  masar-network:
+    driver: bridge

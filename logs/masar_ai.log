@@ -1,0 +1,43 @@
+2026-05-15 14:25:06 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 14:25:06 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 14:25:06 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 14:25:06 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 14:25:06 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 14:25:06 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 14:26:07 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 14:26:13 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 14:26:13 | INFO     | main:50 | Embedding model ready.
+2026-05-15 14:26:13 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 14:26:14 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 14:26:14 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 14:26:14 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 14:26:14 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 14:26:14 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 14:26:14 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 14:26:14 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 14:26:14 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 14:28:06 | INFO     | app.api.endpoints.portfolio:151 | Portfolio analysis request received for freelancer_id=25
+2026-05-15 14:28:06 | INFO     | app.api.endpoints.portfolio:163 | Uploaded file: Mohamed_Fathy_CV.pdf (4525 bytes)
+2026-05-15 14:34:56 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-15 14:34:56 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-15 14:34:56 | INFO     | main:71 | Goodbye 👋
+2026-05-15 14:35:10 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 14:35:10 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 14:35:10 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 14:35:10 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 14:35:10 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 14:35:10 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 14:35:51 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 14:35:55 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 14:35:55 | INFO     | main:50 | Embedding model ready.
+2026-05-15 14:35:55 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 14:35:55 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 14:35:55 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 14:35:55 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 14:35:55 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 14:35:55 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 14:35:55 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 14:35:55 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 14:35:55 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 14:38:09 | INFO     | app.api.endpoints.portfolio:151 | Portfolio analysis request received for freelancer_id=None
+2026-05-15 14:38:09 | INFO     | app.api.endpoints.portfolio:163 | Uploaded file: Mohamed_Fathy_CV.pdf (4525 bytes)
