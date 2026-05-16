@@ -197,6 +197,7 @@ def extract_skills(text: str) -> list[dict]:
 
     # Build output
     skills = []
+    skill_names = []
     for skill_name, confidence in found.items():
         category = _get_skill_category(skill_name)
         skills.append({

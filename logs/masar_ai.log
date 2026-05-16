@@ -41,3 +41,1741 @@
 2026-05-15 14:35:55 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
 2026-05-15 14:38:09 | INFO     | app.api.endpoints.portfolio:151 | Portfolio analysis request received for freelancer_id=None
 2026-05-15 14:38:09 | INFO     | app.api.endpoints.portfolio:163 | Uploaded file: Mohamed_Fathy_CV.pdf (4525 bytes)
+2026-05-15 20:48:48 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 20:48:48 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 20:48:48 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 20:48:49 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 20:48:49 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 20:48:49 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 20:50:09 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 20:50:14 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 20:50:14 | INFO     | main:50 | Embedding model ready.
+2026-05-15 20:50:14 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 20:50:16 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 20:50:16 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 20:50:16 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 20:50:16 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 20:50:16 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 20:50:16 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 20:50:16 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 20:50:16 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 20:53:06 | INFO     | app.api.endpoints.portfolio:152 | Portfolio analysis request received for freelancer_id=15
+2026-05-15 20:53:06 | INFO     | app.api.endpoints.portfolio:164 | Uploaded file: Mohamed_Fathy_CV.pdf (4525 bytes)
+2026-05-15 20:53:52 | ERROR    | app.api.endpoints.portfolio:251 | Portfolio analysis failed: analyze_experience_and_complexity() missing 1 required positional argument: 'skills'
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 188
+               │     └ 3
+               └ <function _main at 0x000001E7EE51BA60>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 188
+           │    └ <function BaseProcess._bootstrap at 0x000001E7EE0FC2C0>
+           └ <SpawnProcess name='SpawnProcess-1' parent=17168 started>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x000001E7EE0F37E0>
+    └ <SpawnProcess name='SpawnProcess-1' parent=17168 started>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x000001E7EE4E9850>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-1' parent=17168 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-1' parent=17168 started>
+    │    └ <function subprocess_started at 0x000001E7EEECBEC0>
+    └ <SpawnProcess name='SpawnProcess-1' parent=17168 started>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=868, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x000001E7EF05CD10>>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=868, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+           │       │   │    └ <function Server.serve at 0x000001E7EEECB2E0>
+           │       │   └ <uvicorn.server.Server object at 0x000001E7EF05CD10>
+           │       └ <function run at 0x000001E7EEBABCE0>
+           └ <module 'asyncio' from 'C:\\Users\\makany\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x000001E7EEFA73D0>
+           │      └ <function Runner.run at 0x000001E7EEBB00E0>
+           └ <asyncio.runners.Runner object at 0x000001E7EF05C790>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at E:\masar-ai\venv\Lib\site-packages\uvicorn\server.py:69> wait_for...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000001E7EEBA9BC0>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000001E7EF05C790>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000001E7EEBA9B20>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000001E7EEBAB920>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000001E7EE6ED080>
+    └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000001E7F125D010>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 69, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001E79F...
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001E...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x000001E7F26783D0>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000001E7F125D010>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001E79F...
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001E...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001E79F...
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001E...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000001E7FE73F790>
+          └ <fastapi.applications.FastAPI object at 0x000001E7F26783D0>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000001E79F4274C0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001E...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x000001E7F125C690>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000001E7FE73F790>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+          │    │               │      │        │                     └ Headers({'host': '127.0.0.1:8000', 'connection': 'keep-alive', 'content-length': '5157', 'sec-ch-ua-platform': '"Windows"', '...
+          │    │               │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000001E79F4274C0>
+          │    │               │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001E...
+          │    │               └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function CORSMiddleware.simple_response at 0x000001E7F10DFE20>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000001E7F125C690>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+          │    │   │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x000001E7F125C690...
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001E...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001E7FE766D50>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000001E7F125C690>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x000001E7F125C690...
+          │                            │    │    │     │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001E...
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x000001E7A06D7310>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x000001E7FE7BB690>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001E7FE766D50>
+          └ <function wrap_app_handling_exceptions at 0x000001E7F1086D40>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001E7A06D9E40>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001E...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x000001E7FE7BB690>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001E7A06D9E40>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001E...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x000001E7FE7BB690>>
+          └ <fastapi.routing.APIRouter object at 0x000001E7FE7BB690>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001E7A06D9E40>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001E...
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │     └ <function Route.handle at 0x000001E7F10A4360>
+          └ APIRoute(path='/analyze-portfolio', name='analyze_portfolio_endpoint', methods=['POST'])
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001E7A06D9E40>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001E...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x000001E7FE923F60>
+          └ APIRoute(path='/analyze-portfolio', name='analyze_portfolio_endpoint', methods=['POST'])
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001E7A06D9E40>
+          │                            │    │        │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001E...
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x000001E7A06D5C50>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x000001E7A06D9EE0>
+          └ <function wrap_app_handling_exceptions at 0x000001E7F1086D40>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001E7A06D9F80>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001E...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x000001E7A06D9EE0>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 72, in app
+    response = await func(request)
+                     │    └ <starlette.requests.Request object at 0x000001E7A06D5C50>
+                     └ <function get_request_handler.<locals>.app at 0x000001E7FE923EC0>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x000001E7EE4C0A40>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': AsyncIOMotorDatabase(Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=False...
+                 │         └ <function analyze_portfolio_endpoint at 0x000001E7F25676A0>
+                 └ <fastapi.dependencies.models.Dependant object at 0x000001E7FE951050>
+
+> File "E:\masar-ai\app\api\endpoints\portfolio.py", line 246, in analyze_portfolio_endpoint
+    "experience_analysis": analyze_experience_and_complexity(extracted_text),
+                           │                                 └ 'MOHAMED AHMED FATHY\nCairo, Egypt | (+20) 111 890 3715 | mohamed200420220@gmail.com\nSUMMARY\nExperienced Flutter Developer ...
+                           └ <function analyze_experience_and_complexity at 0x000001E7F2566F20>
+
+TypeError: analyze_experience_and_complexity() missing 1 required positional argument: 'skills'
+2026-05-15 20:58:31 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-15 20:58:33 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-15 20:58:33 | INFO     | main:71 | Goodbye 👋
+2026-05-15 20:58:44 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 20:58:44 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 20:58:44 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 20:58:44 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 20:58:44 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 20:58:44 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 20:59:21 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 20:59:25 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 20:59:25 | INFO     | main:50 | Embedding model ready.
+2026-05-15 20:59:25 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 20:59:26 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 20:59:26 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 20:59:26 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 20:59:26 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 20:59:26 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 20:59:26 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 20:59:26 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 20:59:26 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 20:59:55 | INFO     | app.api.endpoints.portfolio:152 | Portfolio analysis request received for freelancer_id=15
+2026-05-15 20:59:55 | INFO     | app.api.endpoints.portfolio:164 | Uploaded file: Mohamed_Fathy_CV.pdf (4525 bytes)
+2026-05-15 21:00:27 | ERROR    | app.api.endpoints.portfolio:251 | Portfolio analysis failed: analyze_experience_and_complexity() missing 1 required positional argument: 'skills'
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 296
+               │     └ 3
+               └ <function _main at 0x0000018EF55DBA60>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 296
+           │    └ <function BaseProcess._bootstrap at 0x0000018EF51BC2C0>
+           └ <SpawnProcess name='SpawnProcess-3' parent=17168 started>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x0000018EF51B37E0>
+    └ <SpawnProcess name='SpawnProcess-3' parent=17168 started>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x0000018EF55A9850>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-3' parent=17168 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-3' parent=17168 started>
+    │    └ <function subprocess_started at 0x0000018EF5FBBEC0>
+    └ <SpawnProcess name='SpawnProcess-3' parent=17168 started>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=852, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x0000018EF614CD10>>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=852, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+           │       │   │    └ <function Server.serve at 0x0000018EF5FBB2E0>
+           │       │   └ <uvicorn.server.Server object at 0x0000018EF614CD10>
+           │       └ <function run at 0x0000018EF5C7BCE0>
+           └ <module 'asyncio' from 'C:\\Users\\makany\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x0000018EF60973D0>
+           │      └ <function Runner.run at 0x0000018EF5C800E0>
+           └ <asyncio.runners.Runner object at 0x0000018EF614C790>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at E:\masar-ai\venv\Lib\site-packages\uvicorn\server.py:69> wait_for...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x0000018EF5C79BC0>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x0000018EF614C790>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x0000018EF5C79B20>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x0000018EF5C7B920>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x0000018EF57AD080>
+    └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x0000018EFF7A1E50>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 69, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018EA6...
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x0000018EFF8B9910>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x0000018EFF7A1E50>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018EA6...
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018EA6...
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x0000018EFF9710D0>
+          └ <fastapi.applications.FastAPI object at 0x0000018EFF8B9910>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x0000018EA6949C60>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x0000018EFF7A0390>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x0000018EFF9710D0>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+          │    │               │      │        │                     └ Headers({'host': '127.0.0.1:8000', 'connection': 'keep-alive', 'content-length': '5157', 'sec-ch-ua-platform': '"Windows"', '...
+          │    │               │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x0000018EA6949C60>
+          │    │               │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │    │               └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function CORSMiddleware.simple_response at 0x0000018EF81CFE20>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x0000018EFF7A0390>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+          │    │   │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x0000018EFF7A0390...
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x0000018EFF7A3550>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x0000018EFF7A0390>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x0000018EFF7A0390...
+          │                            │    │    │     │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x0000018EA677DAD0>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x0000018EF8299150>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x0000018EFF7A3550>
+          └ <function wrap_app_handling_exceptions at 0x0000018EF8176D40>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000018EA6949F80>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x0000018EF8299150>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000018EA6949F80>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x0000018EF8299150>>
+          └ <fastapi.routing.APIRouter object at 0x0000018EF8299150>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000018EA6949F80>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │     └ <function Route.handle at 0x0000018EF8194360>
+          └ APIRoute(path='/analyze-portfolio', name='analyze_portfolio_endpoint', methods=['POST'])
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000018EA6949F80>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x0000018EFFA4C180>
+          └ APIRoute(path='/analyze-portfolio', name='analyze_portfolio_endpoint', methods=['POST'])
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000018EA6949F80>
+          │                            │    │        │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x0000018EA6775590>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x0000018EA694A020>
+          └ <function wrap_app_handling_exceptions at 0x0000018EF8176D40>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000018EA694A0C0>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000018...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x0000018EA694A020>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 72, in app
+    response = await func(request)
+                     │    └ <starlette.requests.Request object at 0x0000018EA6775590>
+                     └ <function get_request_handler.<locals>.app at 0x0000018EFFA4C0E0>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x0000018EF5580A40>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': AsyncIOMotorDatabase(Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=False...
+                 │         └ <function analyze_portfolio_endpoint at 0x0000018EF96576A0>
+                 └ <fastapi.dependencies.models.Dependant object at 0x0000018EFFA37AD0>
+
+> File "E:\masar-ai\app\api\endpoints\portfolio.py", line 246, in analyze_portfolio_endpoint
+    "experience_analysis": analyze_experience_and_complexity(extract_skills(extracted_text)),
+                           │                                 │              └ 'MOHAMED AHMED FATHY\nCairo, Egypt | (+20) 111 890 3715 | mohamed200420220@gmail.com\nSUMMARY\nExperienced Flutter Developer ...
+                           │                                 └ <function extract_skills at 0x0000018EF9656AC0>
+                           └ <function analyze_experience_and_complexity at 0x0000018EF9656F20>
+
+TypeError: analyze_experience_and_complexity() missing 1 required positional argument: 'skills'
+2026-05-15 21:02:17 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-15 21:02:17 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-15 21:02:17 | INFO     | main:71 | Goodbye 👋
+2026-05-15 21:02:22 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 21:02:22 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 21:02:22 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 21:02:22 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 21:02:22 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 21:02:22 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 21:02:36 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 21:02:40 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 21:02:40 | INFO     | main:50 | Embedding model ready.
+2026-05-15 21:02:40 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 21:02:40 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 21:02:40 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 21:02:40 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 21:02:40 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 21:02:40 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 21:02:40 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 21:02:41 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 21:02:41 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 21:03:15 | INFO     | app.api.endpoints.portfolio:152 | Portfolio analysis request received for freelancer_id=15
+2026-05-15 21:03:15 | INFO     | app.api.endpoints.portfolio:164 | Uploaded file: Mohamed_Fathy_CV.pdf (4525 bytes)
+2026-05-15 21:37:18 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-15 21:37:18 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-15 21:37:18 | INFO     | main:71 | Goodbye 👋
+2026-05-15 21:37:36 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 21:37:36 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 21:37:36 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 21:37:36 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 21:37:36 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 21:37:36 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 21:38:23 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 21:38:29 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 21:38:29 | INFO     | main:50 | Embedding model ready.
+2026-05-15 21:38:29 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 21:38:30 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 21:38:30 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 21:38:30 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 21:38:30 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 21:38:30 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 21:38:30 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 21:38:30 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 21:38:30 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 21:46:13 | INFO     | app.api.endpoints.portfolio:152 | Portfolio analysis request received for freelancer_id=15
+2026-05-15 21:46:13 | INFO     | app.api.endpoints.portfolio:164 | Uploaded file: Mohamed_Fathy_CV.pdf (4525 bytes)
+2026-05-15 21:49:56 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-15 21:49:56 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-15 21:49:56 | INFO     | main:71 | Goodbye 👋
+2026-05-15 21:50:05 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 21:50:05 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 21:50:05 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 21:50:05 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 21:50:05 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 21:50:05 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 21:50:42 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 21:50:46 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 21:50:46 | INFO     | main:50 | Embedding model ready.
+2026-05-15 21:50:46 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 21:50:46 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 21:50:46 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 21:50:46 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 21:50:46 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 21:50:46 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 21:50:46 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 21:50:46 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 21:50:46 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 21:52:22 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-15 21:52:22 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-15 21:52:22 | INFO     | main:71 | Goodbye 👋
+2026-05-15 21:52:30 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 21:52:30 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 21:52:30 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 21:52:31 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 21:52:31 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 21:52:31 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 21:53:03 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 21:53:06 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 21:53:06 | INFO     | main:50 | Embedding model ready.
+2026-05-15 21:53:06 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 21:53:06 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 21:53:06 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 21:53:06 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 21:53:06 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 21:53:06 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 21:53:06 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 21:53:06 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 21:53:06 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 21:57:26 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-15 21:57:26 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-15 21:57:26 | INFO     | main:71 | Goodbye 👋
+2026-05-15 21:57:36 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 21:57:36 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 21:57:36 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 21:57:36 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 21:57:36 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 21:57:36 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 21:58:04 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 21:58:12 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 21:58:12 | INFO     | main:50 | Embedding model ready.
+2026-05-15 21:58:12 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 21:58:12 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 21:58:12 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 21:58:12 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 21:58:12 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 21:58:12 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 21:58:12 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 21:58:12 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 21:58:12 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 22:11:53 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-15 22:11:53 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-15 22:11:53 | INFO     | main:71 | Goodbye 👋
+2026-05-15 22:12:04 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 22:12:04 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 22:12:04 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 22:12:04 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 22:12:04 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 22:12:04 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 22:12:33 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 22:12:37 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 22:12:37 | INFO     | main:50 | Embedding model ready.
+2026-05-15 22:12:37 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 22:12:38 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 22:12:38 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 22:12:38 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 22:12:38 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 22:12:38 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 22:12:38 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 22:12:38 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 22:12:38 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 22:16:36 | INFO     | app.api.endpoints.portfolio:152 | Portfolio analysis request received for freelancer_id=15
+2026-05-15 22:16:36 | INFO     | app.api.endpoints.portfolio:164 | Uploaded file: Mohamed_Fathy_CV.pdf (4525 bytes)
+2026-05-15 22:17:14 | ERROR    | app.api.endpoints.portfolio:253 | Portfolio analysis failed: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 484
+               │     └ 3
+               └ <function _main at 0x0000020540FCBA60>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 484
+           │    └ <function BaseProcess._bootstrap at 0x0000020540BAC2C0>
+           └ <SpawnProcess name='SpawnProcess-14' parent=17168 started>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x0000020540BA37E0>
+    └ <SpawnProcess name='SpawnProcess-14' parent=17168 started>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x0000020540F99850>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-14' parent=17168 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-14' parent=17168 started>
+    │    └ <function subprocess_started at 0x00000205419BBEC0>
+    └ <SpawnProcess name='SpawnProcess-14' parent=17168 started>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=832, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x0000020541B4CD10>>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=832, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+           │       │   │    └ <function Server.serve at 0x00000205419BB2E0>
+           │       │   └ <uvicorn.server.Server object at 0x0000020541B4CD10>
+           │       └ <function run at 0x000002054167BCE0>
+           └ <module 'asyncio' from 'C:\\Users\\makany\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x0000020541A973D0>
+           │      └ <function Runner.run at 0x00000205416800E0>
+           └ <asyncio.runners.Runner object at 0x0000020541B4C790>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at E:\masar-ai\venv\Lib\site-packages\uvicorn\server.py:69> wait_for...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x0000020541679BC0>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x0000020541B4C790>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x0000020541679B20>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000002054167B920>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000205411AD080>
+    └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x00000205531B1E50>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 69, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000020572...
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000020...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x000002055332B950>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x00000205531B1E50>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000020572...
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000020...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000020572...
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000020...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x0000020553380650>
+          └ <fastapi.applications.FastAPI object at 0x000002055332B950>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x0000020571EB1D00>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000020...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x000002055344EB90>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x0000020553380650>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+          │    │               │      │        │                     └ Headers({'host': '127.0.0.1:8000', 'connection': 'keep-alive', 'content-length': '5157', 'sec-ch-ua-platform': '"Windows"', '...
+          │    │               │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x0000020571EB1D00>
+          │    │               │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000020...
+          │    │               └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function CORSMiddleware.simple_response at 0x0000020543BCFE20>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000002055344EB90>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+          │    │   │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x000002055344EB90...
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000020...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000002054443C2D0>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000002055344EB90>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x000002055344EB90...
+          │                            │    │    │     │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000020...
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x0000020571FE5AD0>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x0000020543C99150>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000002054443C2D0>
+          └ <function wrap_app_handling_exceptions at 0x0000020543B76D40>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000205720C1E40>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000020...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x0000020543C99150>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000205720C1E40>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000020...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x0000020543C99150>>
+          └ <fastapi.routing.APIRouter object at 0x0000020543C99150>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000205720C1E40>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000020...
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │     └ <function Route.handle at 0x0000020543B94360>
+          └ APIRoute(path='/analyze-portfolio', name='analyze_portfolio_endpoint', methods=['POST'])
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000205720C1E40>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000020...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x000002055345C180>
+          └ APIRoute(path='/analyze-portfolio', name='analyze_portfolio_endpoint', methods=['POST'])
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000205720C1E40>
+          │                            │    │        │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000020...
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x000002057223B810>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x00000205720C1EE0>
+          └ <function wrap_app_handling_exceptions at 0x0000020543B76D40>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000205720C1F80>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000020...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x00000205720C1EE0>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 72, in app
+    response = await func(request)
+                     │    └ <starlette.requests.Request object at 0x000002057223B810>
+                     └ <function get_request_handler.<locals>.app at 0x000002055345C0E0>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x0000020540F70A40>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': AsyncIOMotorDatabase(Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=False...
+                 │         └ <function analyze_portfolio_endpoint at 0x00000205450676A0>
+                 └ <fastapi.dependencies.models.Dependant object at 0x000002055344EDD0>
+
+> File "E:\masar-ai\app\api\endpoints\portfolio.py", line 248, in analyze_portfolio_endpoint
+    "experience_analysis": analyze_experience_and_complexity(extracted_text, extract_skills(extracted_text)[1]),
+                           │                                 │               │              └ 'MOHAMED AHMED FATHY\nCairo, Egypt | (+20) 111 890 3715 | mohamed200420220@gmail.com\nSUMMARY\nExperienced Flutter Developer ...
+                           │                                 │               └ <function extract_skills at 0x0000020545066AC0>
+                           │                                 └ 'MOHAMED AHMED FATHY\nCairo, Egypt | (+20) 111 890 3715 | mohamed200420220@gmail.com\nSUMMARY\nExperienced Flutter Developer ...
+                           └ <function analyze_experience_and_complexity at 0x0000020545066F20>
+
+  File "E:\masar-ai\app\services\nlp\experience_detector.py", line 168, in analyze_experience_and_complexity
+    text = preprocessed.get("cleaned_text", "")
+           └ 'MOHAMED AHMED FATHY\nCairo, Egypt | (+20) 111 890 3715 | mohamed200420220@gmail.com\nSUMMARY\nExperienced Flutter Developer ...
+
+AttributeError: 'str' object has no attribute 'get'
+2026-05-15 22:25:35 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-15 22:25:35 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-15 22:25:35 | INFO     | main:71 | Goodbye 👋
+2026-05-15 22:25:45 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 22:25:45 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 22:25:45 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 22:25:45 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 22:25:45 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 22:25:45 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 22:26:25 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 22:26:38 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 22:26:38 | INFO     | main:50 | Embedding model ready.
+2026-05-15 22:26:38 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 22:26:38 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 22:26:38 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 22:26:38 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 22:26:38 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 22:26:38 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 22:26:38 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 22:26:38 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 22:26:38 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 22:26:46 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 22:26:46 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 22:26:46 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 22:26:46 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 22:26:46 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 22:26:46 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 22:27:07 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 22:27:13 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 22:27:13 | INFO     | main:50 | Embedding model ready.
+2026-05-15 22:27:13 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 22:27:13 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 22:27:13 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 22:27:13 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 22:27:13 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 22:27:13 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 22:27:13 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 22:27:13 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 22:27:13 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 22:27:16 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 22:27:16 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 22:27:16 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 22:27:16 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 22:27:16 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 22:27:16 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 22:27:37 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 22:27:45 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 22:27:45 | INFO     | main:50 | Embedding model ready.
+2026-05-15 22:27:45 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 22:27:45 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 22:27:45 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 22:27:45 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 22:27:45 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 22:27:45 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 22:27:45 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 22:27:45 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 22:27:45 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 22:27:49 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 22:27:49 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 22:27:49 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 22:27:49 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 22:27:49 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 22:27:49 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 22:28:06 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 22:28:08 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 22:28:08 | INFO     | main:50 | Embedding model ready.
+2026-05-15 22:28:08 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 22:28:09 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 22:28:09 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 22:28:09 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 22:28:09 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 22:28:09 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 22:28:09 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 22:28:09 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 22:28:09 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 22:31:01 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-15 22:31:01 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-15 22:31:01 | INFO     | main:71 | Goodbye 👋
+2026-05-15 22:31:06 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 22:31:06 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 22:31:06 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 22:31:06 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 22:31:06 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 22:31:06 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 22:31:17 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 22:31:19 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 22:31:19 | INFO     | main:50 | Embedding model ready.
+2026-05-15 22:31:19 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 22:31:19 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 22:31:19 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 22:31:19 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 22:31:19 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 22:31:19 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 22:31:19 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 22:31:19 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 22:31:19 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 22:31:30 | INFO     | app.api.endpoints.portfolio:152 | Portfolio analysis request received for freelancer_id=15
+2026-05-15 22:31:30 | INFO     | app.api.endpoints.portfolio:164 | Uploaded file: Mohamed_Fathy_CV.pdf (4525 bytes)
+2026-05-15 22:31:55 | ERROR    | app.api.endpoints.portfolio:253 | Portfolio analysis failed: string indices must be integers, not 'str'
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 484
+               │     └ 3
+               └ <function _main at 0x00000226D7CEBA60>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 484
+           │    └ <function BaseProcess._bootstrap at 0x00000226D78CC2C0>
+           └ <SpawnProcess name='SpawnProcess-21' parent=17168 started>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x00000226D78C37E0>
+    └ <SpawnProcess name='SpawnProcess-21' parent=17168 started>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x00000226D7CB9850>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-21' parent=17168 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-21' parent=17168 started>
+    │    └ <function subprocess_started at 0x00000226D868BEC0>
+    └ <SpawnProcess name='SpawnProcess-21' parent=17168 started>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=704, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x00000226D881CD10>>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=704, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+           │       │   │    └ <function Server.serve at 0x00000226D868B2E0>
+           │       │   └ <uvicorn.server.Server object at 0x00000226D881CD10>
+           │       └ <function run at 0x00000226D837BCE0>
+           └ <module 'asyncio' from 'C:\\Users\\makany\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x00000226D87673D0>
+           │      └ <function Runner.run at 0x00000226D83800E0>
+           └ <asyncio.runners.Runner object at 0x00000226D881C790>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at E:\masar-ai\venv\Lib\site-packages\uvicorn\server.py:69> wait_for...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x00000226D8379BC0>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x00000226D881C790>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x00000226D8379B20>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x00000226D837B920>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000226D7EBD080>
+    └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x00000226D882DBD0>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 69, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000022688...
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000022...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x00000226EA0F0E50>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x00000226D882DBD0>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000022688...
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000022...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000022688...
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000022...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x00000226EA0E6A10>
+          └ <fastapi.applications.FastAPI object at 0x00000226EA0F0E50>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x00000226FED21800>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000022...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x00000226E9FEBCD0>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x00000226EA0E6A10>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+          │    │               │      │        │                     └ Headers({'host': '127.0.0.1:8000', 'connection': 'keep-alive', 'content-length': '5157', 'sec-ch-ua-platform': '"Windows"', '...
+          │    │               │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x00000226FED21800>
+          │    │               │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000022...
+          │    │               └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function CORSMiddleware.simple_response at 0x00000226DA89FE20>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x00000226E9FEBCD0>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+          │    │   │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x00000226E9FEBCD0...
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000022...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000226E9EBBD50>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x00000226E9FEBCD0>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x00000226E9FEBCD0...
+          │                            │    │    │     │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000022...
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x0000022688D0DAD0>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x00000226EA0D3690>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000226E9EBBD50>
+          └ <function wrap_app_handling_exceptions at 0x00000226DA846D40>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000022688E11D00>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000022...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x00000226EA0D3690>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000022688E11D00>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000022...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x00000226EA0D3690>>
+          └ <fastapi.routing.APIRouter object at 0x00000226EA0D3690>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000022688E11D00>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000022...
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │     └ <function Route.handle at 0x00000226DA864360>
+          └ APIRoute(path='/analyze-portfolio', name='analyze_portfolio_endpoint', methods=['POST'])
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000022688E11D00>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000022...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x00000226EA11C180>
+          └ APIRoute(path='/analyze-portfolio', name='analyze_portfolio_endpoint', methods=['POST'])
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000022688E11D00>
+          │                            │    │        │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000022...
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x0000022688D31550>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x0000022688E11DA0>
+          └ <function wrap_app_handling_exceptions at 0x00000226DA846D40>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000022688E11E40>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000022...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x0000022688E11DA0>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 72, in app
+    response = await func(request)
+                     │    └ <starlette.requests.Request object at 0x0000022688D31550>
+                     └ <function get_request_handler.<locals>.app at 0x00000226EA11C0E0>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x00000226D7C90A40>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': AsyncIOMotorDatabase(Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=False...
+                 │         └ <function analyze_portfolio_endpoint at 0x00000226DBD276A0>
+                 └ <fastapi.dependencies.models.Dependant object at 0x00000226EA10DA90>
+
+> File "E:\masar-ai\app\api\endpoints\portfolio.py", line 248, in analyze_portfolio_endpoint
+    "experience_analysis": analyze_experience_and_complexity({"cleaned_text": extracted_text}, extract_skills(extracted_text)[1]),
+                           │                                                  │                │              └ 'MOHAMED AHMED FATHY\nCairo, Egypt | (+20) 111 890 3715 | mohamed200420220@gmail.com\nSUMMARY\nExperienced Flutter Developer ...
+                           │                                                  │                └ <function extract_skills at 0x00000226DBD26AC0>
+                           │                                                  └ 'MOHAMED AHMED FATHY\nCairo, Egypt | (+20) 111 890 3715 | mohamed200420220@gmail.com\nSUMMARY\nExperienced Flutter Developer ...
+                           └ <function analyze_experience_and_complexity at 0x00000226DBD26F20>
+
+  File "E:\masar-ai\app\services\nlp\experience_detector.py", line 172, in analyze_experience_and_complexity
+    sum(s["confidence"] for s in skills) / skill_count
+                                 │         └ 1
+                                 └ ['Problem Solving']
+
+  File "E:\masar-ai\app\services\nlp\experience_detector.py", line 172, in <genexpr>
+    sum(s["confidence"] for s in skills) / skill_count
+        │                   └ 'Problem Solving'
+        └ 'Problem Solving'
+
+TypeError: string indices must be integers, not 'str'
+2026-05-15 22:36:02 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-15 22:36:04 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-15 22:36:04 | INFO     | main:71 | Goodbye 👋
+2026-05-15 22:36:12 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 22:36:12 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 22:36:12 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 22:36:12 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 22:36:12 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 22:36:12 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 22:36:38 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 22:36:46 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 22:36:46 | INFO     | main:50 | Embedding model ready.
+2026-05-15 22:36:46 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 22:36:47 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 22:36:47 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 22:36:47 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 22:36:47 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 22:36:47 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 22:36:47 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 22:36:47 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 22:36:47 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 22:48:05 | INFO     | app.api.endpoints.portfolio:152 | Portfolio analysis request received for freelancer_id=15
+2026-05-15 22:48:05 | INFO     | app.api.endpoints.portfolio:164 | Uploaded file: Mohamed_Fathy_CV.pdf (4525 bytes)
+2026-05-15 22:48:38 | ERROR    | app.api.endpoints.portfolio:253 | Portfolio analysis failed: tuple indices must be integers or slices, not str
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 516
+               │     └ 3
+               └ <function _main at 0x00000276074ABA60>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 516
+           │    └ <function BaseProcess._bootstrap at 0x000002760708C2C0>
+           └ <SpawnProcess name='SpawnProcess-23' parent=17168 started>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x00000276070837E0>
+    └ <SpawnProcess name='SpawnProcess-23' parent=17168 started>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x0000027607479850>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-23' parent=17168 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-23' parent=17168 started>
+    │    └ <function subprocess_started at 0x0000027607E3BEC0>
+    └ <SpawnProcess name='SpawnProcess-23' parent=17168 started>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=932, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x0000027607FCCD10>>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=932, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+           │       │   │    └ <function Server.serve at 0x0000027607E3B2E0>
+           │       │   └ <uvicorn.server.Server object at 0x0000027607FCCD10>
+           │       └ <function run at 0x0000027607B3BCE0>
+           └ <module 'asyncio' from 'C:\\Users\\makany\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x0000027607F173D0>
+           │      └ <function Runner.run at 0x0000027607B400E0>
+           └ <asyncio.runners.Runner object at 0x0000027607FCC790>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at E:\masar-ai\venv\Lib\site-packages\uvicorn\server.py:69> wait_for...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x0000027607B39BC0>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x0000027607FCC790>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x0000027607B39B20>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x0000027607B3B920>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000002760767D080>
+    └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x0000027619749E50>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 69, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000027638...
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000027...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x000002760A1CBE50>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x0000027619749E50>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000027638...
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000027...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000027638...
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000027...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000002760B621390>
+          └ <fastapi.applications.FastAPI object at 0x000002760A1CBE50>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000002762247F9C0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000027...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x000002761974B8D0>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000002760B621390>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+          │    │               │      │        │                     └ Headers({'host': '127.0.0.1:8000', 'connection': 'keep-alive', 'content-length': '5157', 'sec-ch-ua-platform': '"Windows"', '...
+          │    │               │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000002762247F9C0>
+          │    │               │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000027...
+          │    │               └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function CORSMiddleware.simple_response at 0x000002760A04FE20>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000002761974B8D0>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+          │    │   │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x000002761974B8D0...
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000027...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000002761974BD10>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000002761974B8D0>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x000002761974B8D0...
+          │                            │    │    │     │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000027...
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x0000027638437850>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x00000276196C8AD0>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000002761974BD10>
+          └ <function wrap_app_handling_exceptions at 0x0000027609FF6D40>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000027638525D00>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000027...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x00000276196C8AD0>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000027638525D00>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000027...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x00000276196C8AD0>>
+          └ <fastapi.routing.APIRouter object at 0x00000276196C8AD0>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000027638525D00>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000027...
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │     └ <function Route.handle at 0x000002760A014360>
+          └ APIRoute(path='/analyze-portfolio', name='analyze_portfolio_endpoint', methods=['POST'])
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000027638525D00>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000027...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x00000276198DC180>
+          └ APIRoute(path='/analyze-portfolio', name='analyze_portfolio_endpoint', methods=['POST'])
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000027638525D00>
+          │                            │    │        │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000027...
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x0000027638440410>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x0000027638525DA0>
+          └ <function wrap_app_handling_exceptions at 0x0000027609FF6D40>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000027638525E40>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000027...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x0000027638525DA0>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 72, in app
+    response = await func(request)
+                     │    └ <starlette.requests.Request object at 0x0000027638440410>
+                     └ <function get_request_handler.<locals>.app at 0x00000276198DC0E0>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x0000027607450A40>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': AsyncIOMotorDatabase(Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=False...
+                 │         └ <function analyze_portfolio_endpoint at 0x000002760B4E36A0>
+                 └ <fastapi.dependencies.models.Dependant object at 0x00000276198CD8D0>
+
+> File "E:\masar-ai\app\api\endpoints\portfolio.py", line 248, in analyze_portfolio_endpoint
+    "experience_analysis": analyze_experience_and_complexity({"cleaned_text": extracted_text}, extract_skills(extracted_text)["skill_names[]"]),
+                           │                                                  │                │              └ 'MOHAMED AHMED FATHY\nCairo, Egypt | (+20) 111 890 3715 | mohamed200420220@gmail.com\nSUMMARY\nExperienced Flutter Developer ...
+                           │                                                  │                └ <function extract_skills at 0x000002760B4E2AC0>
+                           │                                                  └ 'MOHAMED AHMED FATHY\nCairo, Egypt | (+20) 111 890 3715 | mohamed200420220@gmail.com\nSUMMARY\nExperienced Flutter Developer ...
+                           └ <function analyze_experience_and_complexity at 0x000002760B4E2F20>
+
+TypeError: tuple indices must be integers or slices, not str
+2026-05-15 22:50:53 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-15 22:50:53 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-15 22:50:53 | INFO     | main:71 | Goodbye 👋
+2026-05-15 23:19:37 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 23:19:38 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 23:19:38 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 23:19:38 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 23:19:38 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 23:19:38 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 23:20:26 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 23:20:31 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 23:20:31 | INFO     | main:50 | Embedding model ready.
+2026-05-15 23:20:31 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 23:20:31 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 23:20:31 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 23:20:31 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 23:20:31 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 23:20:31 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 23:20:31 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 23:20:31 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 23:20:31 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 23:20:40 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 23:20:40 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 23:20:40 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 23:20:40 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 23:20:40 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 23:20:40 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 23:20:51 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 23:20:53 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 23:20:53 | INFO     | main:50 | Embedding model ready.
+2026-05-15 23:20:53 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 23:20:53 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 23:20:53 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 23:20:53 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 23:20:53 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 23:20:53 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 23:20:53 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 23:20:53 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 23:20:53 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 23:23:20 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-15 23:23:20 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-15 23:23:20 | INFO     | main:71 | Goodbye 👋
+2026-05-15 23:23:33 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 23:23:33 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 23:23:33 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 23:23:33 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 23:23:33 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 23:23:33 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 23:23:44 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 23:23:47 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 23:23:47 | INFO     | main:50 | Embedding model ready.
+2026-05-15 23:23:47 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 23:23:47 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 23:23:47 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 23:23:47 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 23:23:47 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 23:23:47 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 23:23:47 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 23:23:47 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 23:23:47 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 23:24:49 | INFO     | app.api.endpoints.portfolio:152 | Portfolio analysis request received for freelancer_id=10
+2026-05-15 23:24:49 | INFO     | app.api.endpoints.portfolio:164 | Uploaded file: Mohamed_Fathy_CV.pdf (4525 bytes)
+2026-05-15 23:33:32 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-15 23:33:32 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-15 23:33:32 | INFO     | main:71 | Goodbye 👋
+2026-05-15 23:33:41 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 23:33:41 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 23:33:41 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 23:33:41 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 23:33:41 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 23:33:41 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 23:34:19 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 23:34:23 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 23:34:23 | INFO     | main:50 | Embedding model ready.
+2026-05-15 23:34:23 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 23:34:23 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 23:34:23 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 23:34:23 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 23:34:23 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 23:34:23 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 23:34:23 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 23:34:24 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 23:34:24 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-15 23:50:53 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-15 23:50:53 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-15 23:50:53 | INFO     | main:71 | Goodbye 👋
+2026-05-15 23:51:16 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-15 23:51:16 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-15 23:51:16 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-15 23:51:16 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-15 23:51:16 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-15 23:51:16 | INFO     | main:46 | Warming up embedding model...
+2026-05-15 23:52:11 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-15 23:52:16 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-15 23:52:16 | INFO     | main:50 | Embedding model ready.
+2026-05-15 23:52:16 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 23:52:16 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-15 23:52:16 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-15 23:52:16 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-15 23:52:16 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-15 23:52:16 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-15 23:52:16 | INFO     | main:59 | FAISS indexes ready.
+2026-05-15 23:52:16 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-15 23:52:16 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-16 02:37:35 | INFO     | app.api.endpoints.portfolio:159 | Portfolio analysis request received for freelancer_id=80
+2026-05-16 02:37:37 | ERROR    | app.api.endpoints.portfolio:262 | Portfolio analysis failed: cannot access local variable 'Image' where it is not associated with a value
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 520
+               │     └ 3
+               └ <function _main at 0x000002174BE5BA60>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 520
+           │    └ <function BaseProcess._bootstrap at 0x000002174BA3C2C0>
+           └ <SpawnProcess name='SpawnProcess-4' parent=28320 started>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x000002174BA337E0>
+    └ <SpawnProcess name='SpawnProcess-4' parent=28320 started>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x000002174BE29850>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-4' parent=28320 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-4' parent=28320 started>
+    │    └ <function subprocess_started at 0x000002174C7EBEC0>
+    └ <SpawnProcess name='SpawnProcess-4' parent=28320 started>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=896, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x000002174C97CD10>>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=896, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+           │       │   │    └ <function Server.serve at 0x000002174C7EB2E0>
+           │       │   └ <uvicorn.server.Server object at 0x000002174C97CD10>
+           │       └ <function run at 0x000002174C4EBCE0>
+           └ <module 'asyncio' from 'C:\\Users\\makany\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x000002174C8C73D0>
+           │      └ <function Runner.run at 0x000002174C4F00E0>
+           └ <asyncio.runners.Runner object at 0x000002174C97C790>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at E:\masar-ai\venv\Lib\site-packages\uvicorn\server.py:69> wait_for...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000002174C4E9BC0>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000002174C97C790>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000002174C4E9B20>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000002174C4EB920>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000002174C02D080>
+    └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000002175E252010>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 69, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000021700...
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000021...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x000002175DFD3B90>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000002175E252010>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000021700...
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000021...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000021700...
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000021...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000002175E1A05D0>
+          └ <fastapi.applications.FastAPI object at 0x000002175DFD3B90>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000002177CCD1F80>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000021...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x000002175E1A0190>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000002175E1A05D0>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+          │    │               │      │        │                     └ Headers({'host': '127.0.0.1:8000', 'connection': 'keep-alive', 'content-length': '5157', 'sec-ch-ua-platform': '"Windows"', '...
+          │    │               │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000002177CCD1F80>
+          │    │               │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000021...
+          │    │               └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function CORSMiddleware.simple_response at 0x000002174E9FFE20>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000002175E1A0190>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+          │    │   │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x000002175E1A0190...
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000021...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000002174ECB5950>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000002175E1A0190>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x000002175E1A0190...
+          │                            │    │    │     │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000021...
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x000002170028ECD0>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x000002175E0EB690>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000002174ECB5950>
+          └ <function wrap_app_handling_exceptions at 0x000002174E9A6D40>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000021700111E40>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000021...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x000002175E0EB690>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000021700111E40>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000021...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x000002175E0EB690>>
+          └ <fastapi.routing.APIRouter object at 0x000002175E0EB690>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000021700111E40>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000021...
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │     └ <function Route.handle at 0x000002174E9C4360>
+          └ APIRoute(path='/analyze-portfolio', name='analyze_portfolio_endpoint', methods=['POST'])
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000021700111E40>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000021...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x000002175E27C180>
+          └ APIRoute(path='/analyze-portfolio', name='analyze_portfolio_endpoint', methods=['POST'])
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000021700111E40>
+          │                            │    │        │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000021...
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x000002170028E810>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x0000021700111EE0>
+          └ <function wrap_app_handling_exceptions at 0x000002174E9A6D40>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000021700111F80>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000021...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x0000021700111EE0>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 72, in app
+    response = await func(request)
+                     │    └ <starlette.requests.Request object at 0x000002170028E810>
+                     └ <function get_request_handler.<locals>.app at 0x000002175E27C0E0>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x000002174BE00A40>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': AsyncIOMotorDatabase(Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=False...
+                 │         └ <function analyze_portfolio_endpoint at 0x000002174FE876A0>
+                 └ <fastapi.dependencies.models.Dependant object at 0x000002175E26DA50>
+
+> File "E:\masar-ai\app\api\endpoints\portfolio.py", line 190, in analyze_portfolio_endpoint
+    image = Image.open(io.BytesIO(file_bytes))
+                                  └ b'%PDF-1.4\n%\x93\x8c\x8b\x9e ReportLab Generated PDF document http://www.reportlab.com\n1 0 obj\n<<\n/F1 2 0 R /F2 3 0 R /F3...
+
+UnboundLocalError: cannot access local variable 'Image' where it is not associated with a value
+2026-05-16 02:46:18 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-16 02:46:18 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-16 02:46:18 | INFO     | main:71 | Goodbye 👋
+2026-05-16 02:47:07 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-16 02:47:07 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-16 02:47:07 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-16 02:47:08 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-16 02:47:08 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-16 02:47:08 | INFO     | main:46 | Warming up embedding model...
+2026-05-16 02:48:54 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-16 02:49:02 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-16 02:49:02 | INFO     | main:50 | Embedding model ready.
+2026-05-16 02:49:02 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-16 02:49:04 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-16 02:49:04 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-16 02:49:04 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-16 02:49:04 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-16 02:49:04 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-16 02:49:04 | INFO     | main:59 | FAISS indexes ready.
+2026-05-16 02:49:04 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-16 02:49:04 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-16 02:50:05 | INFO     | app.api.endpoints.portfolio:164 | Portfolio analysis request received for freelancer_id=80
+2026-05-16 02:50:05 | ERROR    | app.api.endpoints.portfolio:267 | Portfolio analysis failed: cannot access local variable 'Image' where it is not associated with a value
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 656
+               │     └ 3
+               └ <function _main at 0x00000165EA24BA60>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 656
+           │    └ <function BaseProcess._bootstrap at 0x00000165E9E0C2C0>
+           └ <SpawnProcess name='SpawnProcess-5' parent=28320 started>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x00000165E9E037E0>
+    └ <SpawnProcess name='SpawnProcess-5' parent=28320 started>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x00000165EA219850>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-5' parent=28320 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-5' parent=28320 started>
+    │    └ <function subprocess_started at 0x00000165EAC7BEC0>
+    └ <SpawnProcess name='SpawnProcess-5' parent=28320 started>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\_subprocess.py", line 78, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=908, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x00000165EAE0CD10>>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=908, family=2, type=1, proto=6, laddr=('127.0.0.1', 8000)>]
+           │       │   │    └ <function Server.serve at 0x00000165EAC7B2E0>
+           │       │   └ <uvicorn.server.Server object at 0x00000165EAE0CD10>
+           │       └ <function run at 0x00000165EA93BCE0>
+           └ <module 'asyncio' from 'C:\\Users\\makany\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x00000165EAD573D0>
+           │      └ <function Runner.run at 0x00000165EA9400E0>
+           └ <asyncio.runners.Runner object at 0x00000165EAE0C790>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at E:\masar-ai\venv\Lib\site-packages\uvicorn\server.py:69> wait_for...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x00000165EA939BC0>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x00000165EAE0C790>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x00000165EA939B20>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x00000165EA93B920>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000165EA46D080>
+    └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+  File "C:\Users\makany\AppData\Local\Programs\Python\Python311\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis... 'masar_ai'))>)>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x00000165FC439E50>
+  File "E:\masar-ai\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 69, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001659B...
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000016...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x00000165ECFFDF50>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x00000165FC439E50>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001659B...
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000016...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000001659B...
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000016...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x00000165FC5368D0>
+          └ <fastapi.applications.FastAPI object at 0x00000165ECFFDF50>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000001659B2A32E0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000016...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x00000165FC65A850>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x00000165FC5368D0>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+          │    │               │      │        │                     └ Headers({'host': '127.0.0.1:8000', 'connection': 'keep-alive', 'content-length': '5157', 'sec-ch-ua-platform': '"Windows"', '...
+          │    │               │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000001659B2A32E0>
+          │    │               │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000016...
+          │    │               └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function CORSMiddleware.simple_response at 0x00000165ECE8FE20>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x00000165FC65A850>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+          │    │   │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x00000165FC65A850...
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000016...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000165FC3B9E10>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x00000165FC65A850>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x00000165FC65A850...
+          │                            │    │    │     │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000016...
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x000001659B3DB750>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x00000165FC6F3750>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000165FC3B9E10>
+          └ <function wrap_app_handling_exceptions at 0x00000165ECE36D40>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001659CCBF100>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000016...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x00000165FC6F3750>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001659CCBF100>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000016...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x00000165FC6F3750>>
+          └ <fastapi.routing.APIRouter object at 0x00000165FC6F3750>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001659CCBF100>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000016...
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │     └ <function Route.handle at 0x00000165ECE54360>
+          └ APIRoute(path='/analyze-portfolio', name='analyze_portfolio_endpoint', methods=['POST'])
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001659CCBF100>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000016...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x00000165FC6B7E20>
+          └ APIRoute(path='/analyze-portfolio', name='analyze_portfolio_endpoint', methods=['POST'])
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001659CCBF100>
+          │                            │    │        │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000016...
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x000001659B3E9510>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x000001659CCBF1A0>
+          └ <function wrap_app_handling_exceptions at 0x00000165ECE36D40>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001659CCBF240>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000016...
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x000001659CCBF1A0>
+  File "E:\masar-ai\venv\Lib\site-packages\starlette\routing.py", line 72, in app
+    response = await func(request)
+                     │    └ <starlette.requests.Request object at 0x000001659B3E9510>
+                     └ <function get_request_handler.<locals>.app at 0x00000165FC6B7D80>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x00000165EA1F0A40>
+  File "E:\masar-ai\venv\Lib\site-packages\fastapi\routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': AsyncIOMotorDatabase(Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=False...
+                 │         └ <function analyze_portfolio_endpoint at 0x00000165FC627560>
+                 └ <fastapi.dependencies.models.Dependant object at 0x00000165FC6F2ED0>
+
+> File "E:\masar-ai\app\api\endpoints\portfolio.py", line 195, in analyze_portfolio_endpoint
+    image = Image.open(io.BytesIO(file_bytes))
+            │     │    │  │       └ b'%PDF-1.4\n%\x93\x8c\x8b\x9e ReportLab Generated PDF document http://www.reportlab.com\n1 0 obj\n<<\n/F1 2 0 R /F2 3 0 R /F3...
+            │     │    │  └ <class '_io.BytesIO'>
+            │     │    └ <module 'io' (frozen)>
+            │     └ <function open at 0x00000165EE2AB100>
+            └ <module 'PIL.Image' from 'E:\\masar-ai\\venv\\Lib\\site-packages\\PIL\\Image.py'>
+
+UnboundLocalError: cannot access local variable 'Image' where it is not associated with a value
+2026-05-16 02:56:16 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-16 02:56:16 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-16 02:56:16 | INFO     | main:71 | Goodbye 👋
+2026-05-16 02:56:33 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-05-16 02:56:33 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-05-16 02:56:33 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-05-16 02:56:33 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-05-16 02:56:33 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-05-16 02:56:33 | INFO     | main:46 | Warming up embedding model...
+2026-05-16 02:57:20 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-05-16 02:57:26 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-05-16 02:57:26 | INFO     | main:50 | Embedding model ready.
+2026-05-16 02:57:26 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-05-16 02:57:26 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-05-16 02:57:26 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-05-16 02:57:26 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-05-16 02:57:26 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-05-16 02:57:26 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-05-16 02:57:26 | INFO     | main:59 | FAISS indexes ready.
+2026-05-16 02:57:26 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-05-16 02:57:26 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-05-16 02:57:26 | INFO     | app.api.endpoints.portfolio:163 | Portfolio analysis request received for freelancer_id=80
+2026-05-16 03:14:15 | INFO     | main:69 | Shutting down Masar AI...
+2026-05-16 03:14:15 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-05-16 03:14:15 | INFO     | main:71 | Goodbye 👋

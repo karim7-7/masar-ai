@@ -85,6 +85,10 @@ Extracts text from uploaded PDF and returns it.
 
 import fitz
 
+import io
+import pytesseract
+from PIL import Image
+
 from fastapi import (
     APIRouter,
     Depends,
@@ -97,7 +101,8 @@ from fastapi import (
 
 from loguru import logger
 
-from app.services.nlp.skill_extractor import extract_skills
+from app.services.nlp.skill_extractor import extract_skills 
+from app.services.nlp.experience_detector import analyze_experience_and_complexity
 
 from app.services.nlp.github_analyzer import (
     analyze_github_url,
@@ -139,12 +144,19 @@ async def analyze_portfolio_endpoint(
         )
 
     # Validate uploaded file type
-    if file and file.content_type != "application/pdf":
+    allowed_types = [
+    "application/pdf",
+    "image/png",
+    "image/jpeg",
+    "image/jpg",
+]
+
+    if file and file.content_type not in allowed_types:
 
         raise HTTPException(
-            status_code=400,
-            detail="Only PDF files are allowed",
-        )
+        status_code=400,
+        detail="Only PDF or image files are allowed",
+    )
 
     try:
 
@@ -158,24 +170,25 @@ async def analyze_portfolio_endpoint(
         # Read uploaded PDF
         if file:
 
-            pdf_bytes = await file.read()
+            file_bytes = await file.read()
 
-            logger.info(
-                f"Uploaded file: {file.filename} "
-                f"({len(pdf_bytes)} bytes)"
-            )
-
-            # Open PDF from memory
-            pdf_document = fitz.open(
-                stream=pdf_bytes,
+            # PDF
+            if file.content_type == "application/pdf":
+                pdf_document = fitz.open(
+                stream=file_bytes,
                 filetype="pdf"
             )
 
-            # Extract text from all pages
-            for page in pdf_document:
-                extracted_text += page.get_text()
+                for page in pdf_document:
+                    extracted_text += page.get_text()
 
             pdf_document.close()
+
+        # Images OCR
+        else:
+            image = Image.open(io.BytesIO(file_bytes))
+
+            extracted_text = pytesseract.image_to_string(image)
 
         # ── GitHub Analysis ────────────────────────────────────────────────
         github_analysis = None
@@ -240,7 +253,7 @@ async def analyze_portfolio_endpoint(
 
             "skills": extract_skills(extracted_text),
 
-            "extracted_text": extracted_text,
+            "experience_analysis": analyze_experience_and_complexity({"cleaned_text": extracted_text}, extract_skills(extracted_text)),
         }
 
     except Exception as e:
