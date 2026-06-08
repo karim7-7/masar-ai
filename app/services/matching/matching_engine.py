@@ -17,6 +17,7 @@ from app.schemas.schemas import (
     ProjectRequirements,
     MatchProjectResponse,
     FreelancerMatchResult,
+    RankingInput,
 )
 from app.services.embedding.embedding_service import (
     search_similar,
@@ -24,7 +25,7 @@ from app.services.embedding.embedding_service import (
     build_project_text,
 )
 from app.services.nlp.skill_extractor import calculate_skill_overlap
-
+from app.services.ranking.ranking_engine import rank_freelancer
 
 # ── Weights ────────────────────────────────────────────────────────────────────
 W_SEMANTIC = 0.40
@@ -57,7 +58,20 @@ async def match_project_to_freelancers(
         top_k=top_k * 2,   # Over-fetch; we'll re-rank and trim
         db=db,
     )
+        # Deduplicate FAISS results by freelancer_id.
+    # If the same freelancer has multiple embeddings, keep the highest semantic score.
+    unique_candidates = {}
 
+    for candidate in candidates:
+        entity_id = candidate["entity_id"]
+
+        if (
+            entity_id not in unique_candidates
+            or candidate["similarity_score"] > unique_candidates[entity_id]["similarity_score"]
+        ):
+            unique_candidates[entity_id] = candidate
+
+    candidates = list(unique_candidates.values())
     if not candidates:
         logger.warning(f"No FAISS candidates found for project {project.project_id}")
         return MatchProjectResponse(
@@ -81,9 +95,38 @@ async def match_project_to_freelancers(
     analyses = {a["freelancer_id"]: a async for a in analyses_cursor}
 
     # ── Step 3: Score each candidate ─────────────────────────────────────────
+    # results = []
+    # for candidate in candidates:
+    #     fid = candidate["entity_id"]
+    #     profile = profiles.get(fid)
+    #     analysis = analyses.get(fid)
+
+    #     if not profile:
+    #         logger.debug(f"No profile found for freelancer {fid} — skipping")
+    #         continue
+
+    #     match_result = _compute_match_score(
+    #         project=project,
+    #         freelancer_id=fid,
+    #         profile=profile,
+    #         analysis=analysis,
+    #         semantic_score=candidate["similarity_score"],
+    #     )
+    #     results.append(match_result)
+
     results = []
+
+    seen_freelancers = set()
+
     for candidate in candidates:
         fid = candidate["entity_id"]
+
+    # Avoid duplicate FAISS vectors for the same freelancer
+        if fid in seen_freelancers:
+            continue
+
+        seen_freelancers.add(fid)
+
         profile = profiles.get(fid)
         analysis = analyses.get(fid)
 
@@ -98,10 +141,30 @@ async def match_project_to_freelancers(
             analysis=analysis,
             semantic_score=candidate["similarity_score"],
         )
+
+        if match_result.ranking_ready_payload:
+            ranking_input = RankingInput(**match_result.ranking_ready_payload.model_dump())
+
+            ranked = await rank_freelancer(ranking_input, db=db)
+
+            match_result = match_result.model_copy(
+                update={
+                    "final_rank_score": ranked.final_score,
+                    "ranking_component_scores": ranked.component_scores,
+                    "ranking_reasons": ranked.ranking_reasons,
+                    "is_spam": ranked.is_spam,
+                    "beginner_boost_applied": ranked.beginner_boost_applied,
+                }
+            )
+
         results.append(match_result)
 
     # ── Step 4: Sort by match_score descending ────────────────────────────────
-    results.sort(key=lambda x: x.match_score, reverse=True)
+    # results.sort(key=lambda x: x.match_score, reverse=True)
+    results.sort(
+    key=lambda x: x.final_rank_score if x.final_rank_score is not None else x.match_score,
+    reverse=True,
+    )
     top_results = results[:top_k]
 
     # ── Step 5: Persist match results ─────────────────────────────────────────
@@ -166,6 +229,20 @@ def _compute_match_score(
     elif profile.get("portfolio_score"):
         portfolio_quality_raw = profile["portfolio_score"] / 100.0
 
+    portfolio_score_for_ranking = round(portfolio_quality_raw * 100, 1)
+
+    skill_relevance_raw = round(skill_overlap * 100, 1)
+
+    ranking_ready_payload = {
+        "freelancer_id": freelancer_id,
+        "skill_relevance_raw": skill_relevance_raw,
+        "portfolio_score": portfolio_score_for_ranking,
+        "avg_client_rating": profile.get("avg_client_rating", 0),
+        "response_time_hours": profile.get("response_time_hours", 24),
+        "completed_projects": profile.get("completed_projects", 0),
+        "experience_level": profile.get("experience_level", "Beginner"),
+        "is_spam_suspected": profile.get("is_spam_suspected", False),
+    }
     # ── Composite score ───────────────────────────────────────────────────────
     composite = (
         W_SEMANTIC * sem_score
@@ -188,6 +265,8 @@ def _compute_match_score(
         missing_skills=missing_skills,
         semantic_similarity=round(sem_score, 3),
         skill_overlap_score=round(skill_overlap, 3),
+        skill_relevance_raw=skill_relevance_raw,
+        ranking_ready_payload=ranking_ready_payload,
         reason=reason,
     )
 
@@ -267,6 +346,8 @@ async def _persist_match_results(db, project_id: str, results: list[FreelancerMa
             reason=r.reason,
             semantic_similarity=r.semantic_similarity,
             skill_overlap_score=r.skill_overlap_score,
+            skill_relevance_raw=r.skill_relevance_raw,
+
         )
         await db["match_results"].replace_one(
             {"project_id": project_id, "freelancer_id": r.freelancer_id},

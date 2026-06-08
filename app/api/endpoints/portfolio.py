@@ -104,6 +104,17 @@ from loguru import logger
 from app.services.nlp.skill_extractor import extract_skills 
 from app.services.nlp.experience_detector import analyze_experience_and_complexity
 
+from app.services.nlp.preprocessor import preprocess_portfolio_text
+from app.services.nlp.portfolio_scorer import analyze_portfolio_quality
+
+
+from app.models.mongo_models import freelancer_profile_doc, portfolio_analysis_doc
+
+
+from app.services.embedding.embedding_service import (
+    store_embedding,
+    build_freelancer_text,
+)
 from app.services.nlp.github_analyzer import (
     analyze_github_url,
     analyze_github_repo,
@@ -231,30 +242,295 @@ async def analyze_portfolio_endpoint(
 
                     github_repo_analysis.append(repo_result)
 
-        return {
 
-            "success": True,
+        # ── Combine all available text ─────────────────────────────
+        # combined_text = extracted_text or ""
 
-            "freelancer_id": freelancer_id,
+        # if portfolio_text:
+        #     combined_text += "\n" + portfolio_text
 
-            "filename": (
-                file.filename
-                if file
-                else None
-            ),
+                # ── Combine all available text ─────────────────────────────
+        combined_text = extracted_text or ""
 
-            "portfolio_text": portfolio_text,
+        if portfolio_text:
+            combined_text += "\n" + portfolio_text
 
-            "github_analysis": github_analysis,
+        if github_analysis:
+            if github_analysis.get("description"):
+                combined_text += "\n" + github_analysis.get("description", "")
 
-            "github_repo_analysis": github_repo_analysis,
+            if github_analysis.get("readme_text"):
+                combined_text += "\n" + github_analysis.get("readme_text", "")
 
-            "portfolio_url": portfolio_url,
+        for repo_result in github_repo_analysis:
+            if repo_result.get("description"):
+                combined_text += "\n" + repo_result.get("description", "")
 
-            "skills": extract_skills(extracted_text),
+            if repo_result.get("readme_text"):
+                combined_text += "\n" + repo_result.get("readme_text", "")
 
-            "experience_analysis": analyze_experience_and_complexity({"cleaned_text": extracted_text}, extract_skills(extracted_text)),
+        if not combined_text.strip():
+            raise HTTPException(
+                status_code=400,
+                detail="No readable text found for analysis",
+            )
+
+        if not combined_text.strip():
+            raise HTTPException(
+                status_code=400,
+                detail="No readable text found for analysis",
+            )
+
+        # # ── Skill Extraction ───────────────────────────────────────
+        # skills = extract_skills(combined_text)
+
+        # # ── Experience Analysis ────────────────────────────────────
+        # preprocessed = {
+        #     "cleaned_text": combined_text,
+        #     "years_of_experience": 0,
+        # }
+
+        # experience_analysis = analyze_experience_and_complexity(
+        #     preprocessed,
+        #     skills,
+        # )
+
+                # ── Preprocess Text ────────────────────────────────────────
+        preprocessed = preprocess_portfolio_text(combined_text)
+
+        # ── Skill Extraction ───────────────────────────────────────
+        skills = extract_skills(preprocessed["cleaned_text"])
+
+        # ── GitHub verified skills boost ───────────────────────────
+        github_verified_skills = []
+
+        if github_analysis:
+            github_verified_skills.extend(
+                github_analysis.get("verified_skills", [])
+            )
+
+        for repo_result in github_repo_analysis:
+            github_verified_skills.extend(
+                repo_result.get("verified_skills", [])
+            )
+
+        github_verified_lower = {
+            skill.lower() for skill in github_verified_skills
         }
+
+        for skill in skills:
+            if skill["name"].lower() in github_verified_lower:
+                skill["confidence"] = min(skill["confidence"] + 0.07, 0.99)
+                skill["verified"] = True
+                skill["source"] = "github+nlp"
+
+        existing_skill_names = {skill["name"].lower() for skill in skills}
+
+        for github_skill in github_verified_skills:
+            if github_skill.lower() not in existing_skill_names:
+                skills.append(
+                    {
+                        "name": github_skill,
+                        "confidence": 0.88,
+                        "category": "programming_languages",
+                        "verified": True,
+                        "source": "github",
+                    }
+                )
+
+        # ── Experience Analysis ────────────────────────────────────
+        experience_analysis = analyze_experience_and_complexity(
+            preprocessed,
+            skills,
+        )
+
+
+
+                # ── Portfolio Quality Scoring ──────────────────────────────
+        portfolio_quality = analyze_portfolio_quality(
+            preprocessed,
+            skills,
+            experience_analysis,
+        )
+
+        verified_skills = list(
+            set(
+                portfolio_quality.get("verified_skills", [])
+                + github_verified_skills
+            )
+        )
+                # ── Save Freelancer Profile for Matching ───────────────────
+        if freelancer_id:
+            verified_skills = []
+
+            if github_analysis:
+                verified_skills = github_analysis.get("verified_skills", [])
+
+            profile_doc = freelancer_profile_doc(
+                freelancer_id=str(freelancer_id),
+                name="",
+                email="",
+                skills=skills,
+                experience_level=experience_analysis.get(
+                    "experience_level",
+                    "Beginner",
+                ),
+                years_of_experience=experience_analysis.get(
+                    "years_of_experience",
+                    0,
+                ),
+                portfolio_url=portfolio_url or "",
+                github_url=github_url or "",
+            )
+
+            await db["freelancer_profiles"].replace_one(
+                {"freelancer_id": str(freelancer_id)},
+                profile_doc,
+                upsert=True,
+            )
+
+            # analysis_doc = portfolio_analysis_doc(
+            #     freelancer_id=str(freelancer_id),
+            #     skills=skills,
+            #     verified_skills=verified_skills,
+            #     experience_level=experience_analysis.get(
+            #         "experience_level",
+            #         "Beginner",
+            #     ),
+            #     years_of_experience=experience_analysis.get(
+            #         "years_of_experience",
+            #         0,
+            #     ),
+            #     project_complexity=experience_analysis.get(
+            #         "project_complexity",
+            #         "Simple",
+            #     ),
+            #     portfolio_score=0.0,
+            #     technical_depth_score=0.0,
+            #     project_realism_score=0.0,
+            #     raw_text_length=len(combined_text),
+            #     source="pdf" if file else "manual",
+            # )
+
+            # await db["portfolio_analyses"].replace_one(
+            #     {"freelancer_id": str(freelancer_id)},
+            #     analysis_doc,
+            #     upsert=True,
+            # )
+
+            analysis_doc = portfolio_analysis_doc(
+            freelancer_id=str(freelancer_id),
+            skills=skills,
+            verified_skills=verified_skills,
+            experience_level=experience_analysis.get(
+                    "experience_level",
+                    "Beginner",
+                ),
+            years_of_experience=experience_analysis.get(
+                    "years_of_experience",
+                    0,
+                ),
+            project_complexity=experience_analysis.get(
+                    "project_complexity",
+                    "Simple",
+                ),
+            portfolio_score=portfolio_quality.get("portfolio_score", 0.0),
+            technical_depth_score=portfolio_quality.get(
+                    "technical_depth_score",
+                    0.0,
+                ),
+            project_realism_score=portfolio_quality.get(
+                    "project_realism_score",
+                    0.0,
+                ),
+            raw_text_length=preprocessed.get("char_count", len(combined_text)),
+            source="pdf" if file else "manual",
+            )
+        # ── Build Freelancer Text for Embedding ────────────────────
+        verified_skills = []
+
+        if github_analysis:
+            verified_skills = github_analysis.get("verified_skills", [])
+
+        profile_for_embedding = {
+            "bio": portfolio_text or "",
+            "skills": skills,
+            "experience_level": experience_analysis.get("experience_level"),
+            "years_of_experience": experience_analysis.get("years_of_experience"),
+            "portfolio_description": combined_text[:3000],
+            "verified_skills": verified_skills,
+            "portfolio_score": portfolio_quality.get("portfolio_score", 0.0),
+            "technical_depth_score": portfolio_quality.get(
+                "technical_depth_score",
+                0.0,
+            ),
+            "project_realism_score": portfolio_quality.get(
+                "project_realism_score",
+                0.0,
+            ),
+        }
+        
+
+        embedding_text = build_freelancer_text(profile_for_embedding)
+
+        # ── Generate and Store Embedding ───────────────────────────
+        embedding_info = None
+
+        if freelancer_id and embedding_text:
+            embedding, faiss_id = await store_embedding(
+                entity_id=str(freelancer_id),
+                entity_type="freelancer",
+                text=embedding_text,
+                db=db,
+            )
+
+            embedding_info = {
+                "embedding_dimension": len(embedding),
+                "faiss_index_id": faiss_id,
+                "message": "Embedding stored successfully",
+            }
+
+        # ── Final Response ─────────────────────────────────────────
+            return {
+            "success": True,
+            "freelancer_id": freelancer_id,
+            "filename": file.filename if file else None,
+            "portfolio_text": portfolio_text,
+            "portfolio_url": portfolio_url,
+            "github_analysis": github_analysis,
+            "github_repo_analysis": github_repo_analysis,
+            "skills": skills,
+            "verified_skills": verified_skills,
+            "experience_analysis": experience_analysis,
+            "portfolio_quality": portfolio_quality,
+            "embedding": embedding_info,
+            "saved_to_mongodb": bool(freelancer_id),
+        }
+
+        # return {
+
+        #     "success": True,
+
+        #     "freelancer_id": freelancer_id,
+
+        #     "filename": (
+        #         file.filename
+        #         if file
+        #         else None
+        #     ),
+
+        #     "portfolio_text": portfolio_text,
+
+        #     "github_analysis": github_analysis,
+
+        #     "github_repo_analysis": github_repo_analysis,
+
+        #     "portfolio_url": portfolio_url,
+
+        #     "skills": extract_skills(extracted_text),
+
+        #     "experience_analysis": analyze_experience_and_complexity({"cleaned_text": extracted_text}, extract_skills(extracted_text)),
+        # }
 
     except Exception as e:
 

@@ -97,14 +97,43 @@ class ProjectRequirements(BaseModel):
     complexity: Optional[Literal["Simple", "Medium", "Advanced"]] = None
     experience_required: Optional[Literal["Beginner", "Intermediate", "Expert"]] = None
 
+class RankingReadyPayload(BaseModel):
+    freelancer_id: str
+    skill_relevance_raw: float = Field(ge=0, le=100)
+    portfolio_score: float = Field(ge=0, le=100)
+    avg_client_rating: float = Field(ge=0, le=5)
+    response_time_hours: float = Field(ge=0)
+    completed_projects: int = Field(ge=0)
+    experience_level: Literal["Beginner", "Intermediate", "Expert"] = "Beginner"
+    is_spam_suspected: bool = False
 
 class FreelancerMatchResult(BaseModel):
+    # freelancer_id: str
+    # match_score: float = Field(ge=0, le=100)
+    # matching_skills: list[str]
+    # missing_skills: list[str]
+    # semantic_similarity: float = Field(ge=0.0, le=1.0)
+    # skill_overlap_score: float = Field(ge=0.0, le=1.0)
+    # skill_relevance_raw: float = Field(ge=0, le=100)
+    # ranking_ready_payload: RankingReadyPayload
+    # reason: str
     freelancer_id: str
     match_score: float = Field(ge=0, le=100)
+    final_rank_score: float | None = None
+
     matching_skills: list[str]
     missing_skills: list[str]
+
     semantic_similarity: float = Field(ge=0.0, le=1.0)
     skill_overlap_score: float = Field(ge=0.0, le=1.0)
+    skill_relevance_raw: float = Field(ge=0, le=100)
+
+    ranking_ready_payload: RankingReadyPayload | None = None
+    ranking_component_scores: dict[str, float] | None = None
+    ranking_reasons: list[str] = []
+    is_spam: bool = False
+    beginner_boost_applied: bool = False
+
     reason: str
 
 

@@ -151,6 +151,7 @@ def match_result_doc(
     reason: str = "",
     semantic_similarity: float = 0.0,
     skill_overlap_score: float = 0.0,
+    skill_relevance_raw: float = 0.0,
 ) -> dict[str, Any]:
     return {
         "project_id": project_id,
@@ -161,6 +162,7 @@ def match_result_doc(
         "reason": reason,
         "semantic_similarity": semantic_similarity,
         "skill_overlap_score": skill_overlap_score,
+        "skill_relevance_raw": skill_relevance_raw,
         "created_at": datetime.utcnow(),
     }
 
