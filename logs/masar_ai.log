@@ -2781,3 +2781,169 @@ UnboundLocalError: cannot access local variable 'portfolio_score_for_ranking' wh
 2026-06-08 23:48:08 | INFO     | main:69 | Shutting down Masar AI...
 2026-06-08 23:48:08 | INFO     | app.db.database:36 | MongoDB connection closed.
 2026-06-08 23:48:08 | INFO     | main:71 | Goodbye 👋
+2026-06-08 23:48:17 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-06-08 23:48:17 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-06-08 23:48:17 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-06-08 23:48:17 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-06-08 23:48:17 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-06-08 23:48:17 | INFO     | main:46 | Warming up embedding model...
+2026-06-08 23:48:45 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-06-08 23:48:48 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-06-08 23:48:48 | INFO     | main:50 | Embedding model ready.
+2026-06-08 23:48:48 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-06-08 23:48:48 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-06-08 23:48:48 | INFO     | app.services.embedding.embedding_service:75 | FAISS index loaded from ./data/faiss_index\freelancers.index (11 vectors)
+2026-06-08 23:48:48 | INFO     | app.services.embedding.embedding_service:285 | Loaded 4 freelancer embeddings into FAISS
+2026-06-08 23:48:48 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-06-08 23:48:48 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-06-08 23:48:48 | INFO     | main:59 | FAISS indexes ready.
+2026-06-08 23:48:48 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-06-08 23:48:48 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-06-08 23:54:40 | INFO     | app.api.endpoints.portfolio:174 | Portfolio analysis request received for freelancer_id=20
+2026-06-08 23:55:06 | INFO     | app.services.nlp.preprocessor:24 | spaCy model loaded: en_core_web_sm
+2026-06-08 23:55:15 | INFO     | app.services.embedding.embedding_service:214 | Stored embedding for freelancer:20 (FAISS id=5)
+2026-06-08 23:59:06 | INFO     | app.api.endpoints.matching:109 | Match request — project_id=flutter_firebase_ecommerce_app, top_k=7
+2026-06-08 23:59:09 | INFO     | app.services.ranking.ranking_engine:248 | Ranked 5: 11.0/100 (spam=False, beginner_boost=False)
+2026-06-08 23:59:09 | INFO     | app.services.ranking.ranking_engine:248 | Ranked 1: 28.1/100 (spam=False, beginner_boost=False)
+2026-06-08 23:59:09 | INFO     | app.services.ranking.ranking_engine:248 | Ranked 2: 28.1/100 (spam=False, beginner_boost=False)
+2026-06-08 23:59:09 | INFO     | app.services.ranking.ranking_engine:248 | Ranked 20: 28.1/100 (spam=False, beginner_boost=False)
+2026-06-08 23:59:09 | INFO     | app.api.endpoints.matching:121 | Matching complete — project=flutter_firebase_ecommerce_app, candidates=4
+2026-06-09 16:59:14 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-06-09 16:59:14 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-06-09 16:59:14 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-06-09 16:59:14 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-06-09 16:59:14 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-06-09 16:59:14 | INFO     | main:46 | Warming up embedding model...
+2026-06-09 17:00:37 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-06-09 17:00:42 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-06-09 17:00:42 | INFO     | main:50 | Embedding model ready.
+2026-06-09 17:00:42 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-06-09 17:00:43 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-06-09 17:00:43 | INFO     | app.services.embedding.embedding_service:75 | FAISS index loaded from ./data/faiss_index\freelancers.index (16 vectors)
+2026-06-09 17:00:43 | INFO     | app.services.embedding.embedding_service:285 | Loaded 5 freelancer embeddings into FAISS
+2026-06-09 17:00:43 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-06-09 17:00:43 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-06-09 17:00:43 | INFO     | main:59 | FAISS indexes ready.
+2026-06-09 17:00:43 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-06-09 17:00:43 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-06-09 17:59:19 | INFO     | app.api.endpoints.portfolio:174 | Portfolio analysis request received for freelancer_id=30
+2026-06-09 17:59:51 | INFO     | app.services.nlp.preprocessor:24 | spaCy model loaded: en_core_web_sm
+2026-06-09 18:00:00 | INFO     | app.services.embedding.embedding_service:214 | Stored embedding for freelancer:30 (FAISS id=6)
+2026-06-09 18:15:40 | INFO     | app.api.endpoints.portfolio:174 | Portfolio analysis request received for freelancer_id=6a28223552ddf833de1636cd
+2026-06-09 18:16:02 | INFO     | app.services.embedding.embedding_service:214 | Stored embedding for freelancer:6a28223552ddf833de1636cd (FAISS id=7)
+2026-06-09 18:35:33 | INFO     | app.api.endpoints.portfolio:174 | Portfolio analysis request received for freelancer_id=6a28223552ddf833de1636cd
+2026-06-09 18:35:58 | INFO     | app.services.embedding.embedding_service:214 | Stored embedding for freelancer:6a28223552ddf833de1636cd (FAISS id=8)
+2026-06-09 19:38:54 | INFO     | app.api.endpoints.matching:109 | Match request — project_id=6a28419db2f909b982e2e450, top_k=5
+2026-06-09 19:38:58 | INFO     | app.services.ranking.ranking_engine:248 | Ranked 6a28223552ddf833de1636cd: 5.2/100 (spam=False, beginner_boost=False)
+2026-06-09 19:38:58 | INFO     | app.services.ranking.ranking_engine:248 | Ranked 30: 5.2/100 (spam=False, beginner_boost=False)
+2026-06-09 19:38:58 | INFO     | app.services.ranking.ranking_engine:248 | Ranked 5: 5.2/100 (spam=False, beginner_boost=False)
+2026-06-09 19:38:58 | INFO     | app.api.endpoints.matching:121 | Matching complete — project=6a28419db2f909b982e2e450, candidates=3
+2026-06-09 19:59:51 | INFO     | app.api.endpoints.matching:109 | Match request — project_id=6a28468753813641df983378, top_k=5
+2026-06-09 19:59:52 | INFO     | app.services.ranking.ranking_engine:248 | Ranked 6a28223552ddf833de1636cd: 5.2/100 (spam=False, beginner_boost=False)
+2026-06-09 19:59:52 | INFO     | app.services.ranking.ranking_engine:248 | Ranked 30: 5.2/100 (spam=False, beginner_boost=False)
+2026-06-09 19:59:52 | INFO     | app.services.ranking.ranking_engine:248 | Ranked 5: 5.2/100 (spam=False, beginner_boost=False)
+2026-06-09 19:59:52 | INFO     | app.api.endpoints.matching:121 | Matching complete — project=6a28468753813641df983378, candidates=3
+2026-06-09 20:03:08 | INFO     | app.api.endpoints.matching:109 | Match request — project_id=6a28474cfcc111a009212c4c, top_k=5
+2026-06-09 20:03:08 | INFO     | app.services.ranking.ranking_engine:248 | Ranked 6a28223552ddf833de1636cd: 5.2/100 (spam=False, beginner_boost=False)
+2026-06-09 20:03:08 | INFO     | app.services.ranking.ranking_engine:248 | Ranked 30: 5.2/100 (spam=False, beginner_boost=False)
+2026-06-09 20:03:08 | INFO     | app.services.ranking.ranking_engine:248 | Ranked 5: 5.2/100 (spam=False, beginner_boost=False)
+2026-06-09 20:03:08 | INFO     | app.api.endpoints.matching:121 | Matching complete — project=6a28474cfcc111a009212c4c, candidates=3
+2026-06-09 20:10:47 | INFO     | main:69 | Shutting down Masar AI...
+2026-06-09 20:10:47 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-06-09 20:10:47 | INFO     | main:71 | Goodbye 👋
+2026-06-09 20:14:24 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-06-09 20:14:24 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-06-09 20:14:24 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-06-09 20:14:24 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-06-09 20:14:24 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-06-09 20:14:24 | INFO     | main:46 | Warming up embedding model...
+2026-06-09 20:15:16 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-06-09 20:15:20 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-06-09 20:15:20 | INFO     | main:50 | Embedding model ready.
+2026-06-09 20:15:20 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-06-09 20:15:21 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-06-09 20:15:21 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-06-09 20:15:21 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-06-09 20:15:21 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-06-09 20:15:21 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-06-09 20:15:21 | INFO     | main:59 | FAISS indexes ready.
+2026-06-09 20:15:21 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-06-09 20:15:21 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-06-09 20:37:18 | INFO     | app.api.endpoints.portfolio:174 | Portfolio analysis request received for freelancer_id=6a284e0269f603bb4cc0a80d
+2026-06-09 20:37:44 | INFO     | app.services.nlp.preprocessor:24 | spaCy model loaded: en_core_web_sm
+2026-06-09 20:37:53 | INFO     | app.services.embedding.embedding_service:214 | Stored embedding for freelancer:6a284e0269f603bb4cc0a80d (FAISS id=0)
+2026-06-09 20:41:04 | INFO     | app.api.endpoints.matching:109 | Match request — project_id=6a2850304e1900bb0361b035, top_k=5
+2026-06-09 20:41:05 | INFO     | app.services.ranking.ranking_engine:248 | Ranked 6a284e0269f603bb4cc0a80d: 5.2/100 (spam=False, beginner_boost=False)
+2026-06-09 20:41:05 | INFO     | app.api.endpoints.matching:121 | Matching complete — project=6a2850304e1900bb0361b035, candidates=1
+2026-06-09 20:54:17 | INFO     | main:69 | Shutting down Masar AI...
+2026-06-09 20:54:17 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-06-09 20:54:17 | INFO     | main:71 | Goodbye 👋
+2026-06-09 20:54:46 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-06-09 20:54:46 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-06-09 20:54:46 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-06-09 20:54:46 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-06-09 20:54:46 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-06-09 20:54:46 | INFO     | main:46 | Warming up embedding model...
+2026-06-09 20:55:30 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-06-09 20:55:33 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-06-09 20:55:33 | INFO     | main:50 | Embedding model ready.
+2026-06-09 20:55:33 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-06-09 20:55:34 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-06-09 20:55:34 | INFO     | app.services.embedding.embedding_service:75 | FAISS index loaded from ./data/faiss_index\freelancers.index (1 vectors)
+2026-06-09 20:55:34 | INFO     | app.services.embedding.embedding_service:285 | Loaded 1 freelancer embeddings into FAISS
+2026-06-09 20:55:34 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-06-09 20:55:34 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-06-09 20:55:34 | INFO     | main:59 | FAISS indexes ready.
+2026-06-09 20:55:34 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-06-09 20:55:34 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-06-09 20:55:51 | INFO     | main:69 | Shutting down Masar AI...
+2026-06-09 20:55:51 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-06-09 20:55:51 | INFO     | main:71 | Goodbye 👋
+2026-06-09 20:56:54 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-06-09 20:56:54 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-06-09 20:56:54 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-06-09 20:56:54 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-06-09 20:56:54 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-06-09 20:56:54 | INFO     | main:46 | Warming up embedding model...
+2026-06-09 20:57:27 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-06-09 20:57:29 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-06-09 20:57:29 | INFO     | main:50 | Embedding model ready.
+2026-06-09 20:57:29 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-06-09 20:57:29 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-06-09 20:57:29 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\freelancers.index
+2026-06-09 20:57:29 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 freelancer embeddings into FAISS
+2026-06-09 20:57:29 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-06-09 20:57:29 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-06-09 20:57:29 | INFO     | main:59 | FAISS indexes ready.
+2026-06-09 20:57:29 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-06-09 20:57:29 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs
+2026-06-09 20:59:27 | INFO     | app.api.endpoints.portfolio:174 | Portfolio analysis request received for freelancer_id=6a284e0269f603bb4cc0a80d
+2026-06-09 21:00:07 | INFO     | app.services.nlp.preprocessor:24 | spaCy model loaded: en_core_web_sm
+2026-06-09 21:00:14 | INFO     | app.services.embedding.embedding_service:214 | Stored embedding for freelancer:6a284e0269f603bb4cc0a80d (FAISS id=0)
+2026-06-09 21:03:03 | INFO     | app.api.endpoints.matching:109 | Match request — project_id=6a2855564e1900bb0361b036, top_k=5
+2026-06-09 21:03:04 | INFO     | app.services.ranking.ranking_engine:248 | Ranked 6a284e0269f603bb4cc0a80d: 14.6/100 (spam=False, beginner_boost=False)
+2026-06-09 21:03:04 | INFO     | app.api.endpoints.matching:121 | Matching complete — project=6a2855564e1900bb0361b036, candidates=1
+2026-06-09 21:16:41 | INFO     | app.api.endpoints.matching:109 | Match request — project_id=6a285889a4cdb2ace581b9a6, top_k=5
+2026-06-09 21:16:41 | INFO     | app.services.ranking.ranking_engine:248 | Ranked 6a284e0269f603bb4cc0a80d: 46.6/100 (spam=False, beginner_boost=False)
+2026-06-09 21:16:41 | INFO     | app.api.endpoints.matching:121 | Matching complete — project=6a285889a4cdb2ace581b9a6, candidates=1
+2026-06-09 23:09:44 | INFO     | main:69 | Shutting down Masar AI...
+2026-06-09 23:09:44 | INFO     | app.db.database:36 | MongoDB connection closed.
+2026-06-09 23:09:44 | INFO     | main:71 | Goodbye 👋
+2026-06-09 23:10:21 | INFO     | app.core.logging:41 | Logging initialized — level=INFO
+2026-06-09 23:10:21 | INFO     | main:38 | 🚀 Starting Masar-AI v1.0.0
+2026-06-09 23:10:21 | INFO     | app.db.database:23 | Connecting to MongoDB at mongodb://localhost:27017 ...
+2026-06-09 23:10:22 | INFO     | app.db.database:29 | Connected to MongoDB — database: 'masar_ai'
+2026-06-09 23:10:22 | INFO     | app.models.mongo_models:62 | MongoDB indexes created/verified.
+2026-06-09 23:10:22 | INFO     | main:46 | Warming up embedding model...
+2026-06-09 23:11:49 | INFO     | app.services.embedding.embedding_service:38 | Loading embedding model: all-MiniLM-L6-v2
+2026-06-09 23:11:54 | INFO     | app.services.embedding.embedding_service:40 | Embedding model loaded.
+2026-06-09 23:11:54 | INFO     | main:50 | Embedding model ready.
+2026-06-09 23:11:54 | INFO     | main:55 | Rebuilding FAISS indexes from MongoDB...
+2026-06-09 23:11:55 | INFO     | app.services.embedding.embedding_service:265 | Rebuilding FAISS indexes from MongoDB...
+2026-06-09 23:11:55 | INFO     | app.services.embedding.embedding_service:75 | FAISS index loaded from ./data/faiss_index\freelancers.index (1 vectors)
+2026-06-09 23:11:55 | INFO     | app.services.embedding.embedding_service:285 | Loaded 1 freelancer embeddings into FAISS
+2026-06-09 23:11:55 | INFO     | app.services.embedding.embedding_service:79 | Created new FAISS index (dim=384): ./data/faiss_index\projects.index
+2026-06-09 23:11:55 | INFO     | app.services.embedding.embedding_service:285 | Loaded 0 project embeddings into FAISS
+2026-06-09 23:11:55 | INFO     | main:59 | FAISS indexes ready.
+2026-06-09 23:11:55 | INFO     | main:63 | ✅ Masar-AI is ready — http://0.0.0.0:8000
+2026-06-09 23:11:55 | INFO     | main:64 | 📚 API docs: http://0.0.0.0:8000/docs

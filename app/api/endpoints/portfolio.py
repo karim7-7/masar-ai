@@ -343,7 +343,19 @@ async def analyze_portfolio_endpoint(
             preprocessed,
             skills,
         )
+                # ── Normalize skills for saving/matching ───────────────────
+        skill_names = []
 
+        for skill in skills:
+            if isinstance(skill, dict):
+                name = skill.get("name")
+            else:
+                name = str(skill)
+
+            if name:
+                normalized_name = name.strip()
+                if normalized_name and normalized_name not in skill_names:
+                    skill_names.append(normalized_name)
 
 
                 # ── Portfolio Quality Scoring ──────────────────────────────
@@ -370,7 +382,7 @@ async def analyze_portfolio_endpoint(
                 freelancer_id=str(freelancer_id),
                 name="",
                 email="",
-                skills=skills,
+                skills=skill_names,
                 experience_level=experience_analysis.get(
                     "experience_level",
                     "Beginner",
@@ -445,6 +457,12 @@ async def analyze_portfolio_endpoint(
                 ),
             raw_text_length=preprocessed.get("char_count", len(combined_text)),
             source="pdf" if file else "manual",
+            )
+
+            await db["portfolio_analyses"].replace_one(
+                {"freelancer_id": str(freelancer_id)},
+                analysis_doc,
+                upsert=True,
             )
         # ── Build Freelancer Text for Embedding ────────────────────
         verified_skills = []
