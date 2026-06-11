@@ -360,10 +360,13 @@ async def analyze_portfolio_endpoint(
 
                 # ── Portfolio Quality Scoring ──────────────────────────────
         portfolio_quality = analyze_portfolio_quality(
-            preprocessed,
-            skills,
-            experience_analysis,
-        )
+        preprocessed=preprocessed,
+        skills=skills,
+        experience=experience_analysis,
+        github_analysis=github_analysis,
+        github_repo_analysis=github_repo_analysis,
+        portfolio_url=portfolio_url,
+)
 
         verified_skills = list(
             set(
@@ -521,6 +524,8 @@ async def analyze_portfolio_endpoint(
             "verified_skills": verified_skills,
             "experience_analysis": experience_analysis,
             "portfolio_quality": portfolio_quality,
+            "final_score": portfolio_quality.get("final_score", 0.0),
+            "spam_check": portfolio_quality.get("spam_check", {}),
             "embedding": embedding_info,
             "saved_to_mongodb": bool(freelancer_id),
         }

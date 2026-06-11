@@ -178,6 +178,110 @@ def compute_spam_penalty(text: str, skills: list[dict]) -> float:
         return 0.5
 
     return 0.0
+#-------------------------------------------------------------------
+
+def analyze_spam_risk(
+    text: str,
+    skills: list[dict],
+    github_analysis: dict | None = None,
+    github_repo_analysis: list[dict] | None = None,
+    portfolio_url: str | None = None,
+) -> dict:
+    """
+    Return spam/suspicious profile analysis based on CV text, GitHub, portfolio, and skills.
+    """
+
+    reasons = []
+    spam_score = 0
+
+    text_lower = (text or "").lower()
+    github_repo_analysis = github_repo_analysis or []
+
+    # 1. Very short CV/portfolio text
+    if len(text.strip()) < 500:
+        spam_score += 20
+        reasons.append("Very limited CV/portfolio text was provided")
+
+    # 2. Too many skills compared to text size
+    if len(skills) > 25 and len(text.strip()) < 1200:
+        spam_score += 20
+        reasons.append("Too many claimed skills compared to available evidence")
+
+    # 3. Low confidence skills
+    if skills:
+        low_conf_count = sum(1 for s in skills if s.get("confidence", 0) < 0.65)
+        low_conf_ratio = low_conf_count / len(skills)
+
+        if low_conf_ratio > 0.5:
+            spam_score += 15
+            reasons.append("Many extracted skills have low confidence")
+
+    # 4. Missing GitHub evidence
+    if not github_analysis or not github_analysis.get("success"):
+        spam_score += 15
+        reasons.append("GitHub profile is missing or could not be verified")
+    else:
+        public_repos = github_analysis.get("public_repos", 0)
+        top_languages = github_analysis.get("top_languages", [])
+
+        if public_repos == 0:
+            spam_score += 15
+            reasons.append("GitHub profile has no public repositories")
+
+        if not top_languages:
+            spam_score += 10
+            reasons.append("GitHub profile has no detectable programming languages")
+
+    # 5. Repos exist but weak repo evidence
+    successful_repos = [
+        repo for repo in github_repo_analysis
+        if repo.get("success")
+    ]
+
+    if github_analysis and github_analysis.get("success"):
+        if not successful_repos:
+            spam_score += 10
+            reasons.append("No GitHub repositories could be analyzed")
+
+    # 6. Missing portfolio URL
+    if not portfolio_url:
+        spam_score += 10
+        reasons.append("Portfolio URL is missing")
+
+    # 7. Generic / tutorial projects
+    generic_keywords = [
+        "todo app",
+        "hello world",
+        "tutorial",
+        "course project",
+        "practice project",
+        "demo app",
+        "clone",
+    ]
+
+    generic_hits = sum(1 for word in generic_keywords if word in text_lower)
+
+    if generic_hits >= 2:
+        spam_score += 15
+        reasons.append("Profile contains multiple generic or tutorial project signals")
+
+    spam_score = max(0, min(spam_score, 100))
+
+    if spam_score >= 70:
+        risk_level = "high"
+    elif spam_score >= 40:
+        risk_level = "medium"
+    else:
+        risk_level = "low"
+
+    return {
+        "spam_score": spam_score,
+        "is_suspicious": spam_score >= 40,
+        "risk_level": risk_level,
+        "reasons": reasons,
+    }
+#-------------------------------------------------------------------
+
 
 
 def compute_portfolio_score(
@@ -219,6 +323,9 @@ def analyze_portfolio_quality(
     preprocessed: dict,
     skills: list[dict],
     experience: dict,
+    github_analysis: dict | None = None,
+    github_repo_analysis: list[dict] | None = None,
+    portfolio_url: str | None = None,
 ) -> dict:
     """
     Master scorer. Calls all sub-scorers and returns consolidated results.
@@ -238,6 +345,16 @@ def analyze_portfolio_quality(
     )
     verified_skills = verify_demonstrated_skills(text, skills)
     spam_penalty = compute_spam_penalty(text, skills)
+
+    spam_check = analyze_spam_risk(
+    text=text,
+    skills=skills,
+    github_analysis=github_analysis,
+    github_repo_analysis=github_repo_analysis,
+    portfolio_url=portfolio_url,
+)
+
+
     portfolio_score = compute_portfolio_score(
         tech_depth,
         realism,
@@ -247,15 +364,28 @@ def analyze_portfolio_quality(
         spam_penalty,
     )
 
+    final_score = round(
+    max(
+        min(
+            portfolio_score - (spam_check["spam_score"] * 0.25),
+            100,
+        ),
+        0,
+    ),
+    1,
+)
+
     logger.debug(
         f"Portfolio score: {portfolio_score} | Depth: {tech_depth} "
         f"| Realism: {realism} | Verified: {len(verified_skills)}"
     )
 
     return {
-        "portfolio_score": portfolio_score,
-        "technical_depth_score": tech_depth,
-        "project_realism_score": realism,
-        "verified_skills": verified_skills,
-        "spam_penalty": spam_penalty,
-    }
+    "portfolio_score": portfolio_score,
+    "technical_depth_score": tech_depth,
+    "project_realism_score": realism,
+    "verified_skills": verified_skills,
+    "spam_penalty": spam_penalty,
+    "spam_check": spam_check,
+    "final_score": final_score,
+}
