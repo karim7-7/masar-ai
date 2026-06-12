@@ -57,12 +57,20 @@ RUN adduser --disabled-password --gecos "" masaruser \
 USER masaruser
 
 # Expose FastAPI port
-EXPOSE 8000
+# EXPOSE 8000
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-    CMD python -c "import httpx; httpx.get('http://localhost:8000/health').raise_for_status()" \
+# # Health check
+# HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+#     CMD python -c "import httpx; httpx.get('http://localhost:8000/health').raise_for_status()" \
+#     || exit 1
+
+# # Start server
+# CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2"]
+
+EXPOSE 7860
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=120s --retries=3 \
+    CMD python -c "import httpx; httpx.get('http://localhost:7860/health').raise_for_status()" \
     || exit 1
 
-# Start server
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860", "--workers", "1"]
