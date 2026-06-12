@@ -45,7 +45,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY --from=builder /build/deps /usr/local
 
 # Download spaCy model (baked into image for faster cold starts)
-RUN python -m spacy download en_core_web_sm
+# RUN python -m spacy download en_core_web_sm
 
 # Copy application source
 COPY . .
